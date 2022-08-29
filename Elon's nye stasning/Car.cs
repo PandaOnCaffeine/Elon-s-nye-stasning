@@ -9,7 +9,7 @@ namespace Elon_s_nye_stasning
     internal class Car
     {
         //Instance Variables
-        private int battery;
+        private int battery = 100;
         private int meterPerBatteryProcent;
         private string _color;
         private int metersDriven;
@@ -50,9 +50,15 @@ namespace Elon_s_nye_stasning
             {
                 for (int i = 0; i < timesToDrive; i++)
                 {
-                    battery--;
-                    metersDriven += meterPerBatteryProcent;
+                    if (battery > 0)
+                	{
+                        battery--;
+                       metersDriven += meterPerBatteryProcent;
+	                }
                 }
+                Console.WriteLine($"Den {Color} bil har {battery}% tilbage");
+                Console.WriteLine($"Den {Color} bil har kørt {metersDriven} meter");
+                Console.WriteLine("");
             }
             else
             {
@@ -65,7 +71,7 @@ namespace Elon_s_nye_stasning
         {
             Thread.Sleep(4000);
             battery = 100;
-            metersDriven = 0;
+            Console.WriteLine("Battery is now at 100% power");
         }
     }
 }
